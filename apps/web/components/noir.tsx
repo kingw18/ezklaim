@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BarretenbergBackend, ProofData } from '@noir-lang/backend_barretenberg';
 import { Noir } from '@noir-lang/noir_js';
-import circuit from "@repo/circuits/target/noirstarter.json";
+import circuit from "@repo/circuits/target/ezklaim_circuit.json";
 import { generateProof } from "../app/api/prove";
 
 export default function NoirComponent() {
