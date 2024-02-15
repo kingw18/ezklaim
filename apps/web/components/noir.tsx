@@ -19,33 +19,17 @@ export default function NoirComponent() {
         setNoir(noir);
     }, []);
 
-    const generateProofNoir = async (input: any) => {
-        // try {
-            setIsGeneratingProof(true);
-            const proof = await noir!.generateFinalProof(input);
-            setIsGeneratingProof(false);
-            alert("Proof generated!"); 
-
-            console.log(proof);
-            const result = await generateProof(input);
-            console.log(result);
-        setProof(proof);
-        // } catch (e) {
-        //     console.error(e);
-        // }
-    }
     
-
-    const verifyProof = async (proof: ProofData) => {
-        try {
-            console.log(proof.publicInputs);
-            const result = await noir!.verifyFinalProof(proof);
-            alert("Proof verified!");
-            return result;
-        } catch (e) {
-            console.error(e);
-        }
-    }
+    // const verifyProof = async (proof: ProofData) => {
+    //     try {
+    //         console.log(proof.publicInputs);
+    //         const result = await noir!.verifyFinalProof(proof);
+    //         alert("Proof verified!");
+    //         return result;
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // }
 
     if (!noir) {
         return null;
@@ -55,23 +39,21 @@ export default function NoirComponent() {
         <div>
         <h1>ezkclaim</h1>
         <button onClick={() => {
-            generateProofNoir({x:4, y:5, z:6});
-            // setIsGeneratingProof(true);
-            // generateProof({x:5, y: 7}).then(({ proof, publicInputs }) => {
-            //     setProof({
-            //         proof, 
-            //         publicInputs
-            //     });
-            //     alert("Proof generated!");
-            // }).finally(() => setIsGeneratingProof(false))
+            setIsGeneratingProof(true);
+            generateProof({x:5, y: 7}).then(({ proof, publicInputs }) => {
+                setProof({
+                    proof, 
+                    publicInputs
+                });
+                alert("Proof generated!");
+            }).finally(() => setIsGeneratingProof(false))
         }}>{
             isGeneratingProof ? "Generating Proof..." : "Generate Proof"
         
         }</button>
         <button onClick={() => {
-            console.log(proof);
-            proof ? verifyProof(proof): null
-        }}>Verify Proof</button>
+            alert("Not implemented yet");
+    }}>Verify Proof</button>
         </div>
     );
 }

@@ -100,19 +100,7 @@ while (true) {
 }
 console.log("Circuit Detail:");
 console.log(circuitDetailResponse.data);
-const package_name = circuitDetailResponse.data.nargo_package_name;
 
-const { proof, output } = await sindriPollProveRequest(circuitId, {
-  x: 1, 
-  y: 2,
-  z: 3
-});
-
-
-console.log("Proof Output:");
-console.log(proof);
-console.log("Public Output:");
-console.log(output);
 
 })()
 
