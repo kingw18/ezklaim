@@ -4,15 +4,18 @@ import { Code } from "@repo/ui/code";
 import styles from "./page.module.css";
 import { Button } from "@repo/ui/button";
 import NoirComponent from "../components/noir";
-import Link from "next/link";
+import { getAccessToken } from "@auth0/nextjs-auth0";
 
+export default async function Page(): Promise<JSX.Element> {
 
+  const { accessToken } = await getAccessToken();
 
-export default function Page(): JSX.Element {
   return (
     <main className={styles.main}>
       <NoirComponent />
+    
       <a href="/api/auth/login">Login</a>
+      <p>Access Token: {accessToken}</p>
     </main>
   );
 }
