@@ -1,5 +1,5 @@
 import { WagmiProvider, createConfig, http } from "wagmi";
-import { arbitrum, arbitrumSepolia, mainnet, sepolia } from "wagmi/chains";
+import { arbitrum, arbitrumSepolia, mainnet, scrollSepolia, sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
@@ -9,7 +9,7 @@ const config = createConfig(
         // Required API Keys
         // alchemyId: import.meta.env.VITE_ALCHEMY_ID, // or infuraId
         walletConnectProjectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID,
-        chains: [sepolia, arbitrumSepolia, mainnet, arbitrum],
+        chains: [sepolia, arbitrumSepolia, mainnet, arbitrum, scrollSepolia],
         transports: {
             // RPC URL for each chain
             [mainnet.id]: http(
