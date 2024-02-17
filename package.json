@@ -27,7 +27,6 @@
     "@nextui-org/react": "^2.2.9",
     "@noir-lang/backend_barretenberg": "0.19.4",
     "@noir-lang/noir_js": "0.19.4",
-    "@nomicfoundation/hardhat-viem": "^1.0.3",
     "axios": "^1.6.7",
     "dotenv": "^16.4.4",
     "framer-motion": "^11.0.5",
