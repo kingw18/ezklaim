@@ -23,7 +23,13 @@
     "packages/*"
   ],
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
     "@noir-lang/backend_barretenberg": "0.19.4",
-    "@noir-lang/noir_js": "0.19.4"
+    "@noir-lang/noir_js": "0.19.4",
+    "@nomicfoundation/hardhat-viem": "^1.0.3",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.4",
+    "tar": "^6.2.0",
+    "viem": "^2.7.8"
   }
 }

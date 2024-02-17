@@ -1,0 +1,7 @@
+{
+    "$schema": "https://forge.sindri.app/api/v1/sindri-manifest-schema.json",
+    "name": "ezklaim_circuit",
+    "circuitType": "noir",
+    "provingScheme": "barretenberg",
+    "noirVersion": "latest"
+  }
