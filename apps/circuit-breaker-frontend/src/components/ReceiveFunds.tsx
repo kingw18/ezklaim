@@ -14,11 +14,11 @@ export default function ReceiveFunds() {
 
     }
     return (
-        <div >
+        <div className="h-full" >
             {activeTab == 'proof' ?
                 (
-                    <div className="mt-10 ml-4 mr-4 mb-10 flex flex-col h-full justify-between">
-                        <Input type="email" label="Id" placeholder="Enter Fund ID" />
+                    <div className="pt-10 pl-4 pr-4 pb-10 h-full flex flex-col justify-between">
+                        <Input type="email" label="Fund Id" placeholder="Enter Fund ID from sender" />
                         <Input type="email" label="Email" placeholder="Enter Your email" />
                         <div className=" w-full flex justify-center">
                             <Button
@@ -27,10 +27,10 @@ export default function ReceiveFunds() {
                         </div>
                     </div>
                 ) : (
-                    <div className="mt-10 ml-4 mr-4 mb-10 flex flex-col h-full justify-between">
+                    <div className="pt-10 pl-4 pr-4 pb-10 flex flex-col h-full justify-between">
 
                         Proof Generated!!
-                        <div className=" w-full flex justify-center">
+                        <div className=" w-full flex justify-center items-end">
                             <Button
                                 onClick={claimFund}
                                 className="w-1/2" >Claim Fund</Button>

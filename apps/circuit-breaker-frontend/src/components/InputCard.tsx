@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
+import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { useState } from "react";
 import SendFunds from "./SendFunds";
 import ReceiveFunds from "./ReceiveFunds";
