@@ -8,9 +8,8 @@ import { generateProof } from "../app/api/prove";
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { getAccessToken } from '@auth0/nextjs-auth0';
 import { Address } from "viem";
-import { Hex } from "viem";
 
-export default function ReceiveFunds({ handleClaimFunds }: { handleClaimFunds: (address: Address, email: string, proof: Hex) => void }) {
+export default function ReceiveFunds({ handleClaimFunds }: { handleClaimFunds: (address: Address, email: string, proof: Uint8Array) => void }) {
   const [activeTab, setActiveTab] = useState('proof');
   const [destinationAddress, setDestinationAddress] = useState('');
   const [email, setEmail] = useState('');
@@ -64,8 +63,8 @@ export default function ReceiveFunds({ handleClaimFunds }: { handleClaimFunds: (
       {activeTab == 'proof' ?
         (
           <div className="pt-10 pl-4 pr-4 pb-10 h-full flex flex-col justify-between">
-            <Input type="string" label="Destination Address" placeholder="Enter destination wallet address" />
-            <Input type="email" label="Email" placeholder="Enter Your email" />
+            <Input value={destinationAddress} onChange={(e: any) => setDestinationAddress(e.target.value)} type="string" label="Destination Address" placeholder="Enter destination wallet address" />
+            <Input value={email} onChange={(e: any) => setEmail(e.target.value)} type="email" label="Email" placeholder="Enter Your email" />
             <div className=" w-full flex justify-center">
               <Button
                 onClick={submitProof}
@@ -78,7 +77,7 @@ export default function ReceiveFunds({ handleClaimFunds }: { handleClaimFunds: (
             Proof Generated!!
             <div className=" w-full flex justify-center items-end">
               <Button
-                onClick={handleClaimFunds(destination,)}
+                onClick={claimFund}
                 className="w-1/2" >Claim Fund</Button>
             </div>
           </div>

@@ -47,6 +47,23 @@ export default function InputCard() {
       console.error(e);
     }
   };
+
+  const handleClaimFunds = async (address: string, email: string, proof: Uint8Array) => {
+    const client = await getWalletClient();
+    try {
+      const hash = await client.writeContract({
+        abi: ezklaimabi,
+        address: "0x85890311c6028fca301068638be3c68675b88c51",
+        functionName: "claim",
+        args: [proof, sha256(toHex(email)), address],
+        chain: scrollSepolia,
+        account: client.account?.address!,
+      });
+      console.log(hash);
+    } catch (e) {
+      console.error(e);
+    }
+  }
     return (
       <div>
         <Card className="w-[500px] h-[450px] bg-zinc-800" >
