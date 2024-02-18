@@ -6,7 +6,7 @@ export default function Header() {
         <Navbar className="bg-zinc-900" >
             <NavbarBrand >
                 <div className="text-3xl">
-                    eZKclaim
+                    eZKlaim
                 </div>
             </NavbarBrand>
             <NavbarContent >

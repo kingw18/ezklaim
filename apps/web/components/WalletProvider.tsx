@@ -1,5 +1,5 @@
-import { WagmiProvider, createConfig, http } from "wagmi";
-import { arbitrum, arbitrumSepolia, mainnet, sepolia } from "wagmi/chains";
+import { WagmiProvider, createConfig } from "wagmi";
+import { scrollSepolia } from "viem/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
@@ -9,22 +9,7 @@ const config = createConfig(
         // Required API Keys
         // alchemyId: process.env.VITE_ALCHEMY_ID, // or infuraId
         walletConnectProjectId: process.env.VITE_WALLETCONNECT_PROJECT_ID ?? "",
-        chains: [sepolia, arbitrumSepolia, mainnet, arbitrum],
-        transports: {
-            // RPC URL for each chain
-            [mainnet.id]: http(
-                `https://eth-mainnet.g.alchemy.com/v2/${process.env.VITE_ALCHEMY_ID}`,
-            ),
-            [sepolia.id]: http(
-                `https://eth-sepolia.g.alchemy.com/v2/${process.env.VITE_ALCHEMY_ID}`,
-            ),
-            [arbitrumSepolia.id]: http(
-                `https://arb-sepolia.g.alchemy.com/v2/${process.env.VITE_ALCHEMY_ID}`,
-            ),
-            [arbitrum.id]: http(
-                `https://arb-mainnet.g.alchemy.com/v2/${process.env.VITE_ALCHEMY_ID}`,
-            ),
-        },
+        chains: [scrollSepolia],
 
         // Required
         appName: "ZK Pay",
