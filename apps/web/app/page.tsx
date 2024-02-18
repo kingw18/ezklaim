@@ -9,9 +9,18 @@ import NoirComponent from "../components/noir";
 import Link from "next/link";
 import Home from "../components/Home"
 import { Web3Provider } from '../components/WalletProvider'
+import { getAccessToken } from "@auth0/nextjs-auth0";
 
+export default async function Page(): Promise<JSX.Element> {
 
-export default function Page(): JSX.Element {
+  let accessToken; 
+  
+  try {
+    accessToken = (await getAccessToken()).accessToken;
+  } catch (error) {
+    console.error(error);
+  }
+
   return (
     <Web3Provider >
       <main className="purple-dark">
@@ -19,5 +28,6 @@ export default function Page(): JSX.Element {
         <Home />
       </main>
     </Web3Provider >
+
   );
 }
