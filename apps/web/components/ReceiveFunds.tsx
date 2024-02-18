@@ -64,7 +64,6 @@ export default function ReceiveFunds({ handleClaimFunds }: { handleClaimFunds: (
         (
           <div className="pt-10 pl-4 pr-4 pb-10 h-full flex flex-col justify-between">
             <Input value={destinationAddress} onChange={(e: any) => setDestinationAddress(e.target.value)} type="string" label="Destination Address" placeholder="Enter destination wallet address" />
-            <Input value={email} onChange={(e: any) => setEmail(e.target.value)} type="email" label="Email" placeholder="Enter Your email" />
             <div className=" w-full flex justify-center">
               <Button
                 onClick={submitProof}
