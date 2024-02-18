@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { NextUIProviderWrapper } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <UserProvider>
-        <body className={inter.className}>{children}</body>
-      </UserProvider>
+      <NextUIProviderWrapper>
+        <UserProvider>
+          <body className={inter.className}>{children}</body>
+        </UserProvider>
+      </NextUIProviderWrapper>
     </html>
   );
 }

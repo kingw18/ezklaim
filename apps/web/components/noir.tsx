@@ -10,24 +10,26 @@ import { getAccessToken } from '@auth0/nextjs-auth0';
 
 export default function NoirComponent() {
 
+    // check apps/web/components/ReceiveFunds.tsx for current implementation
+
     const { user, error, isLoading } = useUser();
 
     const getUserAccessToken = async () => {
         const { accessToken } = await getAccessToken();
         return accessToken;
-    } 
+    }
 
     const [noir, setNoir] = useState<Noir | null>(null);
     const [proof, setProof] = useState<ProofData | null>(null);
     const [isGeneratingProof, setIsGeneratingProof] = useState(false);
-    
+
     useEffect(() => {
         const backend = new BarretenbergBackend(circuit as any);
         const noir = new Noir(circuit as any, backend);
         setNoir(noir);
     }, []);
 
-    
+
     // const verifyProof = async (proof: ProofData) => {
     //     try {
     //         console.log(proof.publicInputs);
@@ -42,29 +44,29 @@ export default function NoirComponent() {
     if (!noir) {
         return null;
     }
-    
+
     return (
         <div>
-        <h1>ezkclaim</h1>
-        <button onClick={() => {
-            setIsGeneratingProof(true);
-            getAccessToken().then((accessToken) => {
-                console.log(accessToken);
-            });
-            generateProof({x:5, y: 7}).then(({ proof, publicInputs }) => {
-                setProof({
-                    proof, 
-                    publicInputs
+            <h1>ezkclaim</h1>
+            <button onClick={() => {
+                setIsGeneratingProof(true);
+                getAccessToken().then((accessToken) => {
+                    console.log(accessToken);
                 });
-                alert("Proof generated!");
-            }).finally(() => setIsGeneratingProof(false))
-        }}>{
-            isGeneratingProof ? "Generating Proof..." : "Generate Proof"
-        
-        }</button>
-        <button onClick={() => {
-            alert("Not implemented yet");
-    }}>Verify Proof</button>
+                generateProof({ x: 5, y: 7 }).then(({ proof, publicInputs }) => {
+                    setProof({
+                        proof,
+                        publicInputs
+                    });
+                    alert("Proof generated!");
+                }).finally(() => setIsGeneratingProof(false))
+            }}>{
+                    isGeneratingProof ? "Generating Proof..." : "Generate Proof"
+
+                }</button>
+            <button onClick={() => {
+                alert("Not implemented yet");
+            }}>Verify Proof</button>
         </div>
     );
 }
